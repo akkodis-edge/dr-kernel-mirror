@@ -20,8 +20,8 @@
 #define BRD_SM_CTRL_BUTTON		0x8004	/* PCAL6408A-7 */
 
 / {
-	model = "Akkodis Edge Eagle";
-	compatible = "ake,eagle", "fsl,imx95";
+	model = "Akkodis Edge Rhino";
+	compatible = "ake,rhino", "fsl,imx95";
 
 	aliases {
 		ethernet0 = &enetc_port0;
