@@ -311,9 +311,14 @@
 	vmcu: vmcu@41 {
 		compatible = "ake,vmcu";
 		reg = <0x41>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&pinctrl_vmcu>;
 		#io-channel-cells = <1>;
 		#gpio-cells = <2>;
 		gpio-controller;
+		interrupt-parent = <&gpio2>;
+		interrupts = <15 IRQ_TYPE_LEVEL_LOW>;
+		interrupt-names = "shutdown";
 
 		leds {
 			SYS@0 {
@@ -614,6 +619,12 @@
 		fsl,pins = <
 			IMX95_PAD_GPIO_IO28__LPI2C3_SDA				0x40000b9e
 			IMX95_PAD_GPIO_IO29__LPI2C3_SCL				0x40000b9e
+		>;
+	};
+
+	pinctrl_vmcu: vmcugrp {
+		fsl,pins = <
+			IMX95_PAD_GPIO_IO15__GPIO2_IO_BIT15	0x1fe /* INT-IOD */
 		>;
 	};
 
