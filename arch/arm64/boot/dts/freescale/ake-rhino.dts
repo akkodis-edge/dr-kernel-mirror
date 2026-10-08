@@ -323,7 +323,7 @@
 		leds {
 			SYS@0 {
 				reg = <0x0>;
-				function = LED_FUNCTION_STATUS;
+				function = "sys";
 			};
 			KEY@03 {
 				reg = <0x03>;
