@@ -423,7 +423,7 @@
 };
 
 &lpi2c8 {
-	clock-frequency = <400000>;
+	clock-frequency = <1000000>;
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_lpi2c8>;
 	status = "okay";
