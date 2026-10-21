@@ -537,7 +537,8 @@
 
 	gpio5-hog {
 		gpio-hog;
-		gpios = <11 GPIO_ACTIVE_HIGH>;
+		gpios = <11 GPIO_ACTIVE_HIGH>,
+				<14 GPIO_ACTIVE_HIGH>;
 		output-high;
 	};
 };
@@ -645,6 +646,7 @@
 	pinctrl_gpio5_hog: gpiohog5grp {
 		fsl,pins = <
 			IMX95_PAD_XSPI1_SS1_B__GPIO5_IO_BIT11 0x1fe /* SYS_RST#_1V8 */
+			IMX95_PAD_GPIO_IO34__GPIO5_IO_BIT14 0x982   /* SE_RST_N (OD, no PU, fast, X1) */
 		>;
 	};
 
