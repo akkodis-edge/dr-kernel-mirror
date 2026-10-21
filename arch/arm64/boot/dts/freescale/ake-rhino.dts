@@ -507,6 +507,7 @@
 	fsl,phy-tx-preemp-amp-tune-microamp = <600>;
 	fsl,phy-tx-vboost-level-microvolt = <1156>;
 	fsl,phy-tx-vref-tune-percent = <100>;
+	vbus-supply = <&reg_usb_vbus>;
 	status = "okay";
 };
 
