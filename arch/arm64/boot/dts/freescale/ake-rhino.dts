@@ -324,6 +324,10 @@
 			SYS@0 {
 				reg = <0x0>;
 				function = "sys";
+				ake,default-intensity = <LED_COLOR_ID_GREEN>;
+				linux,default-trigger = "timer";
+				default-state = "on";
+				led-pattern = <1000>, <1000>;
 			};
 			KEY@03 {
 				reg = <0x03>;
