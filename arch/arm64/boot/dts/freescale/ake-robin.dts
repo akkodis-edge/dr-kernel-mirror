@@ -1,0 +1,66 @@
+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+/*
+ * Copyright Akkodis Edge 2026
+ */
+
+/dts-v1/;
+
+#include "ake-rhino-core.dtsi"
+
+/ {
+	model = "Akkodis Edge Robin";
+	compatible = "ake,robin", "fsl,imx95";
+
+	system-gpios {
+		compatible = "drs,system-gpios";
+
+		gpios =
+			<&vmcu 6 GPIO_ACTIVE_HIGH>,
+			<&vmcu 7 GPIO_ACTIVE_HIGH>,
+			<&vmcu 8 GPIO_ACTIVE_HIGH>,
+			<&vmcu 9 GPIO_ACTIVE_HIGH>,
+			<&vmcu 10 GPIO_ACTIVE_HIGH>,
+			<&vmcu 11 GPIO_ACTIVE_HIGH>,
+			<&vmcu 12 GPIO_ACTIVE_HIGH>,
+			<&vmcu 13 GPIO_ACTIVE_HIGH>,
+			<&vmcu 14 GPIO_ACTIVE_HIGH>,
+			<&vmcu 15 GPIO_ACTIVE_HIGH>;
+
+		gpio-line-names =
+			"MODEM_PWR",
+			"MODEM_PWR_EN",
+			"ROTARY_PWR_OFF",
+			"ROTARY_PWR_ON",
+			"ROTARY_RF_OFF",
+			"ROTARY_F1",
+			"ROTARY_F2",
+			"ROTARY_ERASE",
+			"ROTARY_ERASE_CLR",
+			"ROTARY_DAY_MODE";
+	};
+};
+
+&i2c2_gpio_expander_71 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_sx1509q>;
+
+	sx1509q-hog-low {
+		gpio-hog;
+		gpios = <3 GPIO_ACTIVE_HIGH>, /* RC210_EN_3V */
+				<7 GPIO_ACTIVE_LOW>;  /* PCIEB_RST#_3V */
+		output-low;
+	};
+	sx1509q-hog-high {
+		gpio-hog;
+		gpios = <4 GPIO_ACTIVE_LOW>; /* LT9611_RSTN_3V */
+		output-high;
+	};
+};
+
+&scmi_iomuxc {
+	pinctrl_sx1509q: sx1509qgrp {
+		fsl,pins = <
+			IMX95_PAD_ENET2_MDIO__GPIO4_IO_BIT15			0x1fe	//not pull down,not pull up ,Fast slew rate, drive X6
+		>;
+	};
+};
