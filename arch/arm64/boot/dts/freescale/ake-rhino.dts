@@ -65,6 +65,10 @@
 	};
 };
 
+&vmcu {
+	battery-names = "rear_battery", "front_battery";
+};
+
 &lpi2c3 {
 	usb_hub: usb2512bi@2c {
 		reg = <0x2c>;
